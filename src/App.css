@@ -8,10 +8,11 @@
 }
 
 .App-header {
-  background-color: #222;
+  background-color: #C8E6C9;
   height: 150px;
   padding: 20px;
   color: white;
+  font-family: 'Trocchi', serif;
 }
 
 .App-title {

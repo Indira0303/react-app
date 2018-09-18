@@ -4,7 +4,8 @@ import React, { Component } from 'react';
    constructor(props) {
     super(props);
     this.state = {
-    rooms: []
+    rooms: [],
+newRoomName: ''
   };
 
 this.roomsRef = this.props.firebase.database().ref('rooms');
@@ -18,15 +19,36 @@ componentDidMount() {
      });
    }
 
+
+   handleSubmit(e) {
+  e.preventDefault();
+  if (!this.state.newRoomName) { return }
+  const newRoom = { description: this.state.newRoomName, isCompleted: false };
+  this.setState({ rooms: [...this.state.rooms, newRoom], newRoomName: '' });
+
+  this.roomsRef.push({name: this.state.newRoomName })
+}
+
+   handleChange(e) {
+     e.preventDefault();
+        this.setState({ newRoomName: e.target.value })
+      }
+
+
   render() {
     return(
       <section className = "roomList">
-      {this.state.rooms.map( (room, index) =>
+      {this.state.rooms.map( ( index, room ) =>
             <li key ={index}>
-              {room.name}
+              <p>{room.name}</p>
               </li>
             )}
-            </section>
+
+          <form onSubmit={ (e) => this.handleSubmit(e) }>
+           <input type="text" value={ this.state.newRoomName } onChange={ (e) => this.handleChange(e) }  />
+           <input type="submit" value="Add Room" />
+         </form>
+  </section>
           );
           }
         }

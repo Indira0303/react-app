@@ -21,10 +21,11 @@ componentDidMount() {
   render() {
     return(
       <section className = "roomList">
-      {this.state.rooms.map( (room) =>
-            <div>
+      {this.state.rooms.map( (room, index) =>
+            <li key ={index}>
               {room.name}
-            </div>)}
+              </li>
+            )}
             </section>
           );
           }

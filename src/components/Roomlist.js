@@ -37,18 +37,22 @@ componentDidMount() {
 
   render() {
     return(
-      <section className = "roomList">
-      {this.state.rooms.map( ( index, room ) =>
-            <li key ={index}>
-              <p>{room.name}</p>
+      <div>
+        <ul className = "roomList">
+        {
+          this.state.rooms.map((room, index) =>
+              <li key={index}>
+              {room.name}
               </li>
             )}
+
 
           <form onSubmit={ (e) => this.handleSubmit(e) }>
            <input type="text" value={ this.state.newRoomName } onChange={ (e) => this.handleChange(e) }  />
            <input type="submit" value="Add Room" />
          </form>
-  </section>
+           </ul>
+  </div>
           );
           }
         }

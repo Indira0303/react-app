@@ -42,7 +42,7 @@ componentDidMount() {
         <ul className = "roomList">
         {
           this.state.rooms.map((room, index) =>
-              <li key={index}>
+              <li key={index} onClick={(e) => this.props.setActive(e)}>
               {room.name}
               </li>
             )}

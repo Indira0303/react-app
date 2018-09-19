@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
-import Roomlist from './components/Roomlist';
-import * as firebase from "firebase";
 
+import * as firebase from "firebase";
+import Roomlist from './components/Roomlist';
 
 var config = {
     apiKey: "AIzaSyAYJkJLyZDi2TV-QBn2TxieZuoPJazMPIM",

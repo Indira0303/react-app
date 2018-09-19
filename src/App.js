@@ -15,7 +15,18 @@ var config = {
   firebase.initializeApp(config);
 
 class App extends Component {
-  
+
+    constructor(props) {
+     super(props);
+     this.state = {
+       activeRoom: '',
+
+   };
+}
+  setActive(e) {
+    this.setState({activeRoom: e.target.value});
+  }
+
   render() {
     return (
       <div className="App">
@@ -23,7 +34,7 @@ class App extends Component {
         <h1> Bloc Chat</h1>
         </header>
         <main>
-<Roomlist firebase = {firebase} />
+<Roomlist firebase = {firebase} activeRoom = {this.state.activeRoom} setActive ={(e) => this.state.setActive} />
 </main>
       </div>
     );

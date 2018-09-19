@@ -15,6 +15,7 @@ var config = {
   firebase.initializeApp(config);
 
 class App extends Component {
+  
   render() {
     return (
       <div className="App">

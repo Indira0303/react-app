@@ -24,9 +24,9 @@ componentDidMount() {
        <div className="messages">
        <h1>{this.props.activeRoom.name}</h1>
                   {
-           this.state.messages.map((message, index) =>
+           this.state.messages.map((message) =>
 
-               <div key={index}>
+
                <li>User: {message.username}
                </li>
                <li>
@@ -36,7 +36,7 @@ componentDidMount() {
                Time sent: {message.sentAt}
                </li>
 
-               </div>
+
              )}
              </div>
            );

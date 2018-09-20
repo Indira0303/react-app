@@ -3,6 +3,7 @@ import './App.css';
 
 import * as firebase from "firebase";
 import Roomlist from './components/Roomlist';
+import MessageList from './components/MessageList';
 
 var config = {
     apiKey: "AIzaSyAYJkJLyZDi2TV-QBn2TxieZuoPJazMPIM",
@@ -23,9 +24,11 @@ class App extends Component {
 
    };
 }
-  setActive(e) {
-    this.setState({activeRoom: e.target.value});
+  setActive(room) {
+    this.setState({activeRoom: room});
+    console.log ("Active")
   }
+
 
   render() {
     return (
@@ -34,7 +37,8 @@ class App extends Component {
         <h1> Bloc Chat</h1>
         </header>
         <main>
-<Roomlist firebase = {firebase} activeRoom = {this.state.activeRoom} setActive ={(e) => this.state.setActive} />
+<Roomlist firebase = {firebase} activeRoom = {this.state.activeRoom} setActive ={this.setActive.bind(this)} />
+<MessageList firebase = {firebase} activeRoom = {this.state.activeRoom} setActive ={this.setActive.bind(this)} />
 </main>
       </div>
     );

@@ -19,14 +19,15 @@ componentDidMount() {
        this.setState({messages: this.state.messages.concat( message )})
      });
    }
+
    render() {
      return(
        <div className="messages">
        <h1>{this.props.activeRoom.name}</h1>
                   {
-           this.state.messages.map((message) =>
+           this.state.messages.filter(message => message.roomId === this.props.activeRoom.key).map((message, index) =>
 
-
+               <div key={index}>
                <li>User: {message.username}
                </li>
                <li>
@@ -36,11 +37,12 @@ componentDidMount() {
                Time sent: {message.sentAt}
                </li>
 
+               </div>
+             )
 
-             )}
-             </div>
-           );
            }
+           </div>
+         ) }
          }
 
 export default MessageList;

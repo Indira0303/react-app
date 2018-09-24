@@ -9,3 +9,16 @@ body {
   font-family: 'Trocchi', serif;
   font-size: large;
 }
+
+.sign{
+  float: right;
+  font-family: 'Trocchi', serif;
+  height: 50px;
+  padding: 20px;
+}
+
+.messages{
+  font-family: 'Trocchi', serif;
+  font-size: large;
+  font-style: italic;
+}

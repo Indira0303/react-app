@@ -6,18 +6,34 @@ import React, { Component } from 'react';
 
     this.state = {
     messages: [],
+    newMessage: '',
 
   };
 
-   this.roomsRef = this.props.firebase.database().ref('messages');
+   this.messagesRef = this.props.firebase.database().ref('messages');
 }
 
 componentDidMount() {
-     this.roomsRef.on('child_added', snapshot => {
+     this.messagesRef.on('child_added', snapshot => {
        const message = snapshot.val();
        message.key = snapshot.key;
        this.setState({messages: this.state.messages.concat( message )})
      });
+   }
+
+  handleSubmit(e) {
+  e.preventDefault();
+  this.messagesRef.push({
+    content: this.state.newMessage,
+    username: this.props.user,
+    roomId: this.props.value
+ })
+
+}
+
+handleChange(e) {
+  e.preventDefault();
+     this.setState({ newMessage: e.target.value })
    }
 
    render() {
@@ -35,12 +51,16 @@ componentDidMount() {
                </li>
                <li>
                Time sent: {message.sentAt}
-               </li>
+               </li> </div>
 
-               </div>
              )
 
            }
+
+           <form onSubmit={ (e) => this.handleSubmit(e) }>
+            <input type="text" value={ this.state.newMessage } onChange={ (e) => this.handleChange(e) }  />
+            <input type="submit" value="Add Message" />
+           </form>
            </div>
          ) }
          }

@@ -4,7 +4,7 @@ body {
   font-family: sans-serif;
 }
 .roomList{
-  float: left;
+
   color: #1B5E20;
   font-family: 'Trocchi', serif;
   font-size: large;
@@ -21,4 +21,8 @@ body {
   font-family: 'Trocchi', serif;
   font-size: large;
   font-style: italic;
+  text-align: center;
+}
+#user{
+  color: blue
 }
